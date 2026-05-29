@@ -46,10 +46,10 @@ public class SistemaAmigo {
     }
 
 
-    public void configuraAmigoSecretoDe(String emailDaPessoa, String emailSorteado) {
+    public void configuraAmigoSecretoDe(String emailDaPessoa, String emailSorteado) throws AmigoInexistenteException{
     }
 
-    public String pesquisaAmigoSecretoDe(String emailDaPessoa) {
+    public String pesquisaAmigoSecretoDe(String emailDaPessoa) throws AmigoInexistenteException, AmigoNaoSorteadoException{
         Amigo a = pesquisaAmigo(emailDaPessoa);
         if (a != null) {
             return a.getEmailAmigoSorteado();
