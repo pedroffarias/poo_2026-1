@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SistemaFunionarioBomPrato implements SistemaFuncionarios{
+public class SistemaFuncionariosBomPrato implements SistemaFuncionarios{
     private Map<String, Funcionario> funcionarios;
 
 
@@ -15,10 +15,10 @@ public class SistemaFunionarioBomPrato implements SistemaFuncionarios{
 
     @Override
     public void cadastrarFuncionario(Funcionario funcionario) throws FuncionarioJaExisteException {
-        if (this.funcionarios.containsKey(funcionario)) {
+        if (this.funcionarios.containsKey(funcionario.getCpf())) {
             throw new FuncionarioJaExisteException("Já existe funcionário");
         }
-        Funcionario novoFuncionario = this.funcionarios.put(new Funcionario);
+        Funcionario novoFuncionario = this.funcionarios.put(funcionario.getCpf(), funcionario);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SistemaFunionarioBomPrato implements SistemaFuncionarios{
         }
 
         Funcionario f = this.funcionarios.get(cpfFuncionario);
-        funcionarios.setSalario(novoSalario);
+        f.setSalario(novoSalario);
     }
 
     @Override
@@ -70,14 +70,14 @@ public class SistemaFunionarioBomPrato implements SistemaFuncionarios{
 
     @Override
     public List<Funcionario> pesquisarFuncionariosComSalarioMaiorQue(double valor){
-        List<Funcionario> funcionariosSalario = new ArrayList<>();
+        List<Funcionario> funcionariosFiltrados = new ArrayList<>();
 
-        for(Funcionario pessoa : this.funcionarios.values()){
-            if(pessoa.getSalario() > 2000){
-                funcionariosSalario.add(pessoa);
+        for(Funcionario f : this.funcionarios.values()){
+            if(f.getSalario() > 2000){
+                funcionariosFiltrados.add(f);
             }
         }
-        return funcionariosSalario;
+        return funcionariosFiltrados;
 
 
         ;
