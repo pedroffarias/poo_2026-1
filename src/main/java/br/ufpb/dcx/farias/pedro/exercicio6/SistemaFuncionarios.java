@@ -1,4 +1,6 @@
 package br.ufpb.dcx.farias.pedro.exercicio6;
+import java.util.List;
+
 
 public interface SistemaFuncionarios {
     public void cadastrarFuncionario(Funcionario funcionario)

@@ -55,17 +55,28 @@ public class SistemaFuncionariosBomPrato implements SistemaFuncionarios{
 
     @Override
     public boolean funcionarioJaExiste(String cpfFuncionario) {
-        return false;
+        return this.funcionarios.containsKey(cpfFuncionario);
     }
 
     @Override
-    public List<Funcionario> pesquisarFuncionariosPorTipo(TipoFuncionario tipo) {
-        return List.of();
+    public List<Funcionario> pesquisarFuncionariosPorTipo(TipoFuncionario tipo){
+
+        List<Funcionario> funcionariosEspecificos = new ArrayList<>();
+
+        for(Funcionario f : this.funcionarios.values()){
+            if(f.getTipo().equals(tipo)){
+                funcionariosEspecificos.add(f);
+            }
+        }
+        return funcionariosEspecificos;
     }
 
     @Override
     public Funcionario pesquisarFuncionario(String cpfFuncionario) throws FuncionarioInexistenteException {
-        return null;
+        if(!this.funcionarios.containsKey(cpfFuncionario)){
+            throw new FuncionarioInexistenteException("Este funconário não existe.");
+        }
+        return this.funcionarios.get(cpfFuncionario);
     }
 
     @Override
@@ -78,9 +89,6 @@ public class SistemaFuncionariosBomPrato implements SistemaFuncionarios{
             }
         }
         return funcionariosFiltrados;
-
-
-        ;
     }
 
 }
