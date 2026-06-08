@@ -11,7 +11,7 @@ public class SistemaDeTurismoGUI extends JFrame{
         setTitle("Sistema de Turismo");
         setSize(500,500);
         setLocation(0,0);
-        setResizable(true);
+        setResizable(false);
         getContentPane().setBackground(Color.black);
     }
     public static void main(String []args){
