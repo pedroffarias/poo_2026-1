@@ -19,9 +19,9 @@ public class SistemaDeTurismoGUI extends JFrame{
         janela.setVisible(true);
         WindowListener fechadorDeJanelaPrincipal = new WindowAdapter(){
             public void windowClosing(WindowEvent e){
+                System.out.println("Saindo");
                 System.exit(0);
             }
-
         };
         janela.addWindowListener(fechadorDeJanelaPrincipal);
     }
